@@ -46,7 +46,6 @@ public class SearchApi extends RuntimeException {
     @Produces({"application/json"})
     public List<SongDto> searchByArtist(@PathParam("artist") String artist) {
 		List<SongDto> listSong = new ArrayList<SongDto>();
-		
 		try {
 			ItunesApiClient itunesApi = new ItunesApiClient();
 			String jsonData = (String) itunesApi.findByArtist(String.class, artist);
