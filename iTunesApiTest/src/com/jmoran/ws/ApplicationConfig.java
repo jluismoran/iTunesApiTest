@@ -12,7 +12,7 @@ import javax.ws.rs.core.Application;
 
 /**
  *
- * @author ordsisfoh
+ * @author Jhonathan Moran
  */
 
 @ApplicationPath("/itunes")
