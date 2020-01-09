@@ -20,6 +20,7 @@ public class ItunesApiClient {
         webTarget = client.target(BASE_URI).path("search");
     }
 
+    // consuming the iTunes Api to search by artist
     public <T> T findByArtist(Class<T> responseType, String artist) throws ClientErrorException {
         WebTarget resource = webTarget;
         return resource.queryParam("term", artist).request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);

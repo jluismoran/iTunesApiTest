@@ -40,38 +40,41 @@ public class SearchApi extends RuntimeException {
         
     }
 	
-	// BUSCAR CANCIONES EN ITUNES
+	// FIND ITUNES SONGS BY ARTIST
 	@GET
     @Path("/byArtist/{artist}")
     @Produces({"application/json"})
     public List<SongDto> searchByArtist(@PathParam("artist") String artist) {
 		List<SongDto> listSong = new ArrayList<SongDto>();
 		try {
-			ItunesApiClient itunesApi = new ItunesApiClient();
-			String jsonData = (String) itunesApi.findByArtist(String.class, artist);
+			ItunesApiClient itunesApi = new ItunesApiClient(); // instantiating the class to call iTunes Api
+			String jsonData = (String) itunesApi.findByArtist(String.class, artist); // calling the iTunes Api, passing the artist name
 			ObjectMapper mapper = new ObjectMapper();
 			JsonNode jsonNode= mapper.readValue(jsonData, JsonNode.class);
-			ArrayNode listResults = (ArrayNode) jsonNode.get("results");
+			ArrayNode listResults = (ArrayNode) jsonNode.get("results"); // getting the json results
 			for(JsonNode resultNode : listResults) {
+				// getting values from json results
 				String songTitle = resultNode.get("trackName").textValue();
 				String album = resultNode.get("collectionName").textValue();
 				String year = resultNode.get("releaseDate").textValue();
 				String songArtist = resultNode.get("artistName").textValue();
 				String genre = resultNode.get("primaryGenreName").textValue();
-				String price = resultNode.get("trackPrice").textValue();
+				Double price = resultNode.get("trackPrice").doubleValue();
+				
+				// passing values to the songDto object
 				SongDto songDto = new SongDto();
 				songDto.setSongTitle(songTitle);
 				songDto.setAlbum(album);
 				songDto.setYear(year.substring(0, 4));
 				songDto.setArtist(songArtist);
 				songDto.setGenre(genre);
-				songDto.setPrice(price!=null?Double.parseDouble(price):0);
-				listSong.add(songDto);
+				songDto.setPrice(price);
+				listSong.add(songDto); // adding to the list
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 		
-        return listSong;
+        return listSong; // returning the list of songs found in iTunes as json array
     }
 }
