@@ -9,19 +9,6 @@ import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 
-/**
- * Jersey REST client generated for REST resource:TbSecUsuarioFacadeREST
- * [pe.gob.bosques.tbsecusuario]<br>
- * USAGE:
- * <pre>
- *        UsuarioWsClient client = new UsuarioWsClient();
- *        Object response = client.XXX(...);
- *        // do whatever with response
- *        client.close();
- * </pre>
- *
- * @author bosques
- */
 public class ItunesApiClient {
 
     private WebTarget webTarget;
