@@ -5,9 +5,4 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   	<display-name>iTunesApiTest</display-name>
-	<!-- <servlet>
-	    <servlet-name>ScheduleRiesgoIncumplimientoServlet</servlet-name>
-	    <servlet-class>pe.gob.bosques.ws.util.ScheduleRiesgoIncumplimientoServlet</servlet-class>
-	    <load-on-startup>1</load-on-startup>
-	</servlet> -->
 </web-app>

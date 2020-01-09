@@ -25,7 +25,7 @@ import com.jmoran.ws.client.ItunesApiClient;
 
 /**
  *
- * @author ordsisfoh
+ * @author Jhonathan Moran
  */
 @Stateless
 @ApplicationException (rollback=true)
